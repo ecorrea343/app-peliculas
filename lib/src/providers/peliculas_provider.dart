@@ -1,7 +1,4 @@
-
 import 'dart:convert';
-
-
 import 'package:peliculas/src/models/pelicula_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,11 +19,7 @@ Future<List<Pelicula>> _procesarRespuesta(Uri url) async {
     return peliculas.items;
 }
 
-
-
-
-
-Future<List<Pelicula>> getEnCines()async{
+  Future<List<Pelicula>> getEnCines()async{
 
   final url = Uri.https(_url,'3/movie/now_playing',{
     'api_key'  : _apikey,
@@ -38,17 +31,10 @@ Future<List<Pelicula>> getEnCines()async{
 
   Future<List<Pelicula>>getPopulares() async {
 
-
   final url  = Uri.https(_url,'3/movie/popular',{
     'api_key' : _apikey,
     'language': _language
   });
-  
     return await _procesarRespuesta(url);
-  
-
-
-}
-
-
+  }
 }

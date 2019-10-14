@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/providers/peliculas_provider.dart';
 import 'package:peliculas/src/widgets/cards_swiper_widget.dart';
+import 'package:peliculas/src/widgets/movie_horizontal_widget.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
       body: Container(
           child: Column(
             children: <Widget>[
-            Text('Hola Mundo'),
+            //Text('Hola Mundo'),
               _swipeTarjetas(),
               _footer(context),
             ],
@@ -61,23 +62,28 @@ class HomePage extends StatelessWidget {
 
       width: double.infinity,
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
 
-          Text('Populares', style: Theme.of(context).textTheme.subhead),
+          Container(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text('Populares', style: Theme.of(context).textTheme.subhead)),
+          SizedBox(height: 5.0,),
 
          FutureBuilder(
 
               future: peliculasProvider.getPopulares(),
               builder: (BuildContext context, AsyncSnapshot <List>snapshot) {
                
-                snapshot.data?.forEach((p) => print(p.title));
-                // if (snapshot.hasData) {
-                //   return CardSwiper(peliculas : snapshot.data,);
+                //snapshot.data?.forEach((p) => print(p.title));
+                 if (snapshot.hasData) {
+                  return MovieHorizontal(peliculas : snapshot.data);
                   
-                // }
+                 }else{
+                   return Center(child: CircularProgressIndicator());
+                 }
                
-                return  Container();
+              
               },
             ),
         ],
