@@ -27,4 +27,10 @@ class HomePage extends StatelessWidget {
       
     );
   }
+  Widget _swipeTarjetas(){
+    return Container(
+      
+    );
+  }
+
 }
