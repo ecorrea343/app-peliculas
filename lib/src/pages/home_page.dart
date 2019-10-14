@@ -5,10 +5,25 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pagina Principal'),
+        title: Text('Peliculas en Cines'),
+        backgroundColor: Colors.indigoAccent,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (){},
+          )
+        ],
       ),
-      body: 
-      Text('Hola Mundo'),
+      body: Container(
+          child: Column(
+            children: <Widget>[
+            Text('Hola Mundo'),
+              _swipeTarjetas(),
+            ],
+          ),
+
+      )
+      
       
     );
   }
