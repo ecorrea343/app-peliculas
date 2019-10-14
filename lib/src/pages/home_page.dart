@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
             Text('Hola Mundo'),
               _swipeTarjetas(),
+              _footer(context),
             ],
           ),
 
@@ -47,8 +48,6 @@ class HomePage extends StatelessWidget {
         },
       );
 
-
-
    // peliculasProvider.getEnCines();
 
     // return  CardSwiper(
@@ -56,4 +55,33 @@ class HomePage extends StatelessWidget {
     // );
   }
 
+  Widget _footer(BuildContext context){
+
+    return Container(
+
+      width: double.infinity,
+      child: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+
+          Text('Populares', style: Theme.of(context).textTheme.subhead),
+
+         FutureBuilder(
+
+              future: peliculasProvider.getPopulares(),
+              builder: (BuildContext context, AsyncSnapshot <List>snapshot) {
+               
+                snapshot.data?.forEach((p) => print(p.title));
+                // if (snapshot.hasData) {
+                //   return CardSwiper(peliculas : snapshot.data,);
+                  
+                // }
+               
+                return  Container();
+              },
+            ),
+        ],
+      ),
+    );
+  }
 }
