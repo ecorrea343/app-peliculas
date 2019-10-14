@@ -32,12 +32,14 @@ class HomePage extends StatelessWidget {
     
     return  Container(
       
+      //Contenido agregado en el video 97 - Crear un swiper de Tarjetas.
       padding: EdgeInsets.only(top: 15.0),
       width : double.infinity,
       height: 300.0,
 
 
       child: Swiper(
+        
           layout:SwiperLayout.STACK ,
           itemWidth: 240.0,
           itemBuilder: (BuildContext context,int index){
