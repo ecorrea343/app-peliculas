@@ -4,29 +4,42 @@ import 'package:peliculas/src/models/pelicula_model.dart';
 class MovieHorizontal extends StatelessWidget {
   
   final List<Pelicula>peliculas;
+  final Function siguientePagina;
 
-  MovieHorizontal ({@required this.peliculas});
+  MovieHorizontal ({@required this.peliculas,@required this.siguientePagina});
+  final _pageController = new PageController(
+        initialPage: 1,
+        viewportFraction: 0.3
+  );
   
   @override
   Widget build(BuildContext context) {
 
-    final _screemSize = MediaQuery.of(context).size;
+    final _screemSize = MediaQuery.of(context).size;//Para saber el tamaño de patnalla
+
+    _pageController.addListener((){
+
+      if ( _pageController.position.pixels >= _pageController.position.maxScrollExtent - 200) {
+          siguientePagina();
+      }
+
+    }); 
+
+
+    
 
     return Container(
     height:_screemSize.height * 0.3,
     child: PageView(
       pageSnapping: false,
-      controller: PageController(
-        initialPage: 1,
-        viewportFraction: 0.3
-      ),
-      children: _tarjetas(),
+      controller: _pageController,
+      children: _tarjetas(context),
     ),
       
     );
   }
 
-  List<Widget> _tarjetas(){
+  List<Widget> _tarjetas(BuildContext context){
 
     return peliculas.map((pelicula) {
 
@@ -42,7 +55,13 @@ class MovieHorizontal extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: 150.0,
               ),
-            )
+            ),
+            SizedBox(height: 5.0,),
+            Text(
+                pelicula.title,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.caption,
+            ),
           ],
         ),
       );
