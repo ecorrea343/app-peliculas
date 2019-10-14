@@ -3,6 +3,9 @@ import 'package:peliculas/src/providers/peliculas_provider.dart';
 import 'package:peliculas/src/widgets/cards_swiper_widget.dart';
 
 class HomePage extends StatelessWidget {
+
+   final peliculasProvider = new PeliculasProvider(); //propiedad de case
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +34,26 @@ class HomePage extends StatelessWidget {
   }
   Widget _swipeTarjetas(){
     
-    final peliculasProvider = new PeliculasProvider();
-    peliculasProvider.getEnCines();
-    return  CardSwiper(
-      peliculas: [1,2,3,4,5],
-    );
+   
+      return FutureBuilder(
+        future: peliculasProvider.getEnCines(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return CardSwiper( peliculas: snapshot.data, );
+          }
+          return Container(
+            height: 500.0,
+            child: Center(child: CircularProgressIndicator()));
+        },
+      );
+
+
+
+   // peliculasProvider.getEnCines();
+
+    // return  CardSwiper(
+    //   peliculas: [1,2,3,4,5],
+    // );
   }
 
 }
