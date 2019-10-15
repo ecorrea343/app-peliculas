@@ -55,7 +55,7 @@ Widget _tarjeta (BuildContext context, Pelicula pelicula){
                 image: NetworkImage(pelicula.getPosterImg()),
                 placeholder: AssetImage('assets/img/no-image.jpg'),
                 fit: BoxFit.cover,
-                height: 160.0,
+                height: 150.0,
               ),
             ),
             SizedBox(height: 5.0,),
@@ -75,34 +75,34 @@ Widget _tarjeta (BuildContext context, Pelicula pelicula){
       );
 }
 
-  List<Widget> _tarjetas(BuildContext context){
+  // List<Widget> _tarjetas(BuildContext context){
 
-    return peliculas.map((pelicula) {
+  //   return peliculas.map((pelicula) {
 
-      return Container(
-        margin: EdgeInsets.only(right: 10.0),
-        child: Column(
-          children: <Widget>[
-            ClipRRect(
-                borderRadius:BorderRadius.circular (8.0),
-                child: FadeInImage(
-                image: NetworkImage(pelicula.getPosterImg()),
-                placeholder: AssetImage('assets/img/no-image.jpg'),
-                fit: BoxFit.cover,
-                height: 140.0,
-              ),
-            ),
-            SizedBox(height: 5.0,),
-            Text(
-                pelicula.title,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.caption,
-            ),
-          ],
-        ),
-      );
+  //     return Container(
+  //       margin: EdgeInsets.only(right: 10.0),
+  //       child: Column(
+  //         children: <Widget>[
+  //           ClipRRect(
+  //               borderRadius:BorderRadius.circular (8.0),
+  //               child: FadeInImage(
+  //               image: NetworkImage(pelicula.getPosterImg()),
+  //               placeholder: AssetImage('assets/img/no-image.jpg'),
+  //               fit: BoxFit.cover,
+  //               height: 140.0,
+  //             ),
+  //           ),
+  //           SizedBox(height: 5.0,),
+  //           Text(
+  //               pelicula.title,
+  //               overflow: TextOverflow.ellipsis,
+  //               style: Theme.of(context).textTheme.caption,
+  //           ),
+  //         ],
+  //       ),
+  //     );
 
-    }).toList();
+  //   }).toList();
 
-  }
+  // }
 }
