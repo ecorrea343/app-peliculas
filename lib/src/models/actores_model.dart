@@ -38,13 +38,13 @@ class Actor {
 
   Actor.fromJsonMap (Map<String , dynamic> json){
 
-    castId          =json['cast_id     '];
-    character       =json['character   '];
-    creditId        =json['credit_id   '];
-    gender          =json['gender      '];
-    id              =json['id          '];
-    name            =json['name        '];
-    order           =json['order       '];
+    castId          =json['cast_id'];
+    character       =json['character'];
+    creditId        =json['credit_id'];
+    gender          =json['gender'];
+    id              =json['id'];
+    name            =json['name'];
+    order           =json['order'];
     profilePath     =json['profile_path'];
     
 
@@ -53,8 +53,7 @@ class Actor {
     getFoto(){
     
     if (profilePath == null) {
-      
-      return 'http://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg';
+    return 'http://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg';
     }
     return 'https://image.tmdb.org/t/p/w500/$profilePath';
   }
