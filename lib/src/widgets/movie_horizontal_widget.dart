@@ -45,12 +45,14 @@ class MovieHorizontal extends StatelessWidget {
 
 Widget _tarjeta (BuildContext context, Pelicula pelicula){
 
+  pelicula.uniqueId = '${ pelicula.id }-poster';
+
   final tarjetaPelicula = Container(
         margin: EdgeInsets.only(right: 10.0),
         child: Column(
           children: <Widget>[
             Hero(
-                  tag: pelicula.id,
+                  tag: pelicula.uniqueId,
                   child: ClipRRect(
                   borderRadius:BorderRadius.circular (8.0),
                   child: FadeInImage(
